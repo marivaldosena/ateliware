@@ -131,4 +131,13 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# JetBrains IntelliJ IDEA e PyCharm
+.idea
+*.iml
+
+# Visual Studio e Visual Studio Code
+.vscode
+.vs
+.code
+
 # End of https://www.gitignore.io/api/flask
