@@ -13,3 +13,21 @@ services:
       --reload
       --chdir ./web
       'app:create_app()'
+    links:
+      - db
+
+  db:
+    image: mysql:8
+    restart: always
+    command: >
+      --default-authentication-plugin=mysql_native_password
+    volumes:
+      - 'dbdata:/var/lib/mysql'
+    env_file:
+      - '.env'
+
+  redis:
+    image: redis:5-alpine
+
+volumes:
+  dbdata:
