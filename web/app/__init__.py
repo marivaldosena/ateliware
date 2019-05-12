@@ -1,4 +1,6 @@
 from flask import Flask
+from .extensions import (db, api)
+from .routes import RepositorioResource
 
 
 def create_app(config=None):
@@ -9,8 +11,11 @@ def create_app(config=None):
     if config:
         app.config.update(config)
 
-    @app.route('/')
-    def home():
-        return 'Home'
+    load_extensions(app)
 
     return app
+
+
+def load_extensions(app):
+    db.init_app(app)
+    api.init_app(app)
