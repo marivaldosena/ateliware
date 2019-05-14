@@ -4,6 +4,11 @@ services:
   web:
     build: './web'
     restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        window: 3s
     volumes:
       - '.:/app'
     ports:
